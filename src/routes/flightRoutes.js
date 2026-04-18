@@ -146,7 +146,7 @@ router.post('/upload', authenticateToken, upload.single('file'), flightControlle
  *       200:
  *         description: List of available flights
  *       429:
- *         description: Rate limit exceeded (3 queries per day)
+ *         description: Rate limit exceeded (50 queries per day)
  */
 router.get('/', flightController.queryFlights);
 

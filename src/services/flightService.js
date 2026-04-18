@@ -66,7 +66,7 @@ async function checkRateLimit(ipAddress) {
   }
 
   const log = result.rows[0];
-  if (log.query_count >= 3) {
+  if (log.query_count >= 50) {
     return true;
   }
 

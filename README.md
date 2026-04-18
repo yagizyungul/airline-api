@@ -58,7 +58,7 @@ Neon PostgreSQL
 | /api/v1/auth/login | POST | No | No | Login and get JWT token |
 | /api/v1/flights | POST | ✅ Yes | No | Add a new flight |
 | /api/v1/flights/upload | POST | ✅ Yes | No | Add flights via CSV file |
-| /api/v1/flights | GET | No | ✅ Yes (page, pageSize) | Query available flights (3/day limit) |
+| /api/v1/flights | GET | No | ✅ Yes (page, pageSize) | Query available flights (50/day limit) |
 | /api/v1/tickets | POST | ✅ Yes | No | Buy a ticket |
 | /api/v1/checkin | POST | No | No | Check in a passenger |
 | /api/v1/flights/:id/passengers | GET | ✅ Yes | ✅ Yes (page, pageSize) | Get passenger list |
