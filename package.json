@@ -5,6 +5,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "dev:gateway": "cd gateway && npm run dev",
+    "dev:airports": "cd airport-service && npm run dev",
+    "install:all": "npm install && cd gateway && npm install && cd ../airport-service && npm install",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

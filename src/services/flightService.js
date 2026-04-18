@@ -78,8 +78,8 @@ async function checkRateLimit(ipAddress) {
 }
 
 async function queryFlights(params) {
-  const { dateFrom, dateTo, airportFrom, airportTo, numberOfPeople, tripType, page } = params;
-  const pageSize = 10;
+  const { dateFrom, dateTo, airportFrom, airportTo, numberOfPeople, tripType, page, pageSize: pageSizeParam } = params;
+  const pageSize = Math.min(parseInt(pageSizeParam) || 10, 100);
   const currentPage = parseInt(page) || 1;
   const offset = (currentPage - 1) * pageSize;
   const peopleCount = parseInt(numberOfPeople) || 1;
@@ -166,12 +166,13 @@ async function queryFlights(params) {
   return {
     data: outboundFlights,
     page: currentPage,
+    pageSize,
     totalPages,
   };
 }
 
-async function getPassengers(flightNumber, date, page) {
-  const pageSize = 10;
+async function getPassengers(flightNumber, date, page, pageSizeParam) {
+  const pageSize = Math.min(parseInt(pageSizeParam) || 10, 100);
   const currentPage = parseInt(page) || 1;
   const offset = (currentPage - 1) * pageSize;
 
@@ -203,6 +204,7 @@ async function getPassengers(flightNumber, date, page) {
   return {
     data: passengers,
     page: currentPage,
+    pageSize,
     totalPages,
   };
 }

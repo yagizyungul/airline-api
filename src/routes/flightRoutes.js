@@ -133,7 +133,15 @@ router.post('/upload', authenticateToken, upload.single('file'), flightControlle
  *         name: page
  *         schema:
  *           type: integer
- *         description: Page number
+ *           default: 1
+ *         description: Page number (default 1)
+ *       - in: query
+ *         name: pageSize
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *           maximum: 100
+ *         description: Number of results per page (default 10, max 100)
  *     responses:
  *       200:
  *         description: List of available flights
@@ -168,7 +176,15 @@ router.get('/', flightController.queryFlights);
  *         name: page
  *         schema:
  *           type: integer
- *         description: Page number
+ *           default: 1
+ *         description: Page number (default 1)
+ *       - in: query
+ *         name: pageSize
+ *         schema:
+ *           type: integer
+ *           default: 10
+ *           maximum: 100
+ *         description: Number of results per page (default 10, max 100)
  *     responses:
  *       200:
  *         description: List of passengers

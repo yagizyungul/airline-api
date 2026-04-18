@@ -42,11 +42,11 @@ async function queryFlights(req, res) {
 async function getPassengers(req, res) {
   try {
     const { flightNumber } = req.params;
-    const { date, page } = req.query;
+    const { date, page, pageSize } = req.query;
     if (!date) {
       return res.status(400).json({ message: 'Date query parameter is required' });
     }
-    const result = await flightService.getPassengers(flightNumber, date, page);
+    const result = await flightService.getPassengers(flightNumber, date, page, pageSize);
     res.status(200).json(result);
   } catch (err) {
     res.status(err.status || 500).json({ message: err.message || 'Internal server error' });
